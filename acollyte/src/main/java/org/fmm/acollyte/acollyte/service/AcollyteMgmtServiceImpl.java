@@ -3,6 +3,7 @@ package org.fmm.acollyte.acollyte.service;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -119,22 +120,40 @@ public class AcollyteMgmtServiceImpl implements AcollyteMgmtService {
     }
     
     private List<? extends RafflePerson> nextServices(Person person) {
-        return rafflePersonRepository.findNextServices(person, prepareFromNow());
+        return rafflePersonRepository.findNextServices(person, prepareFromZonedNow());
     }
 
+    @Deprecated
     private OffsetDateTime prepareFromNow() {
-        LocalDate fromLD = null;
-        
         OffsetDateTime from = null;
-        
+        LocalDate fromLD = null;
         LocalTime time00 = null;
-        time00 = LocalTime.of(0, 0);
+        
         
         fromLD = LocalDate.now();
+        time00 = LocalTime.of(0, 0);
 
         from = OffsetDateTime.of(fromLD, time00, OffsetDateTime.now().getOffset());
         return from;
     }
+
+    private ZonedDateTime prepareFromZonedNow() {
+        ZonedDateTime from = null;
+
+        LocalDate fromLD = null;
+        LocalTime time00 = null;
+        
+        
+        fromLD = LocalDate.now();
+        time00 = LocalTime.of(0, 0);
+
+        from = ZonedDateTime.of(fromLD, time00, ZonedDateTime.now().getZone());
+        
+        return from;
+        
+        
+    }
+
 
     @Override
     public Person myInfo(String userId) {

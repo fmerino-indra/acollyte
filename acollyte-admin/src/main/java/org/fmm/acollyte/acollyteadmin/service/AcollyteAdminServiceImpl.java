@@ -4,7 +4,8 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
-import java.time.OffsetDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -84,9 +85,10 @@ public class AcollyteAdminServiceImpl implements AcollyteAdminService {
 //            aux = sunday.atTime(time);
             service = new Service();
 //            service.setServiceDate(aux.atZone(ZoneId.systemDefault()).toOffsetDateTime());
-            
-            service.setServiceDate(DateUtil.localDateToOffsetDateTime(sunday,time));
-            
+            @SuppressWarnings("unused")
+            ZoneId madridZone = ZoneId.systemDefault();
+//            service.setServiceDate(DateUtil.localDateToOffsetDateTime(sunday,time));
+            service.setServiceDate(DateUtil.localDateToZonedDateTime(sunday, time));
             service.setEve(false);
             service.setFixed(false);
             service.setServiceName(ServiceTypeEnum.SUNDAY.getName());
@@ -98,23 +100,8 @@ public class AcollyteAdminServiceImpl implements AcollyteAdminService {
         }
         return response;
     }
-    
-    public List<Service> correctLocalTime() {
-        List<Service> services = null;
-        services = serviceRepository.findAll();
-        OffsetDateTime aux = null;
-        LocalDate date = null;
-        LocalTime time = LocalTime.of(12, 0);
-        for (Service service : services) {
-            aux = service.getServiceDate();
-            date = aux.toLocalDate();
-            aux = DateUtil.localDateToOffsetDateTime(date, time);
-            service.setServiceDate(aux);
-            serviceRepository.save(service);
-        }
-        return services;
-    }
-//    public RafflePerson addPersonToService(Person person, Service service) {
+
+    //    public RafflePerson addPersonToService(Person person, Service service) {
 //        RafflePerson sp = null;
 //        sp = spRepository.findServicesByPersonAndService(person, service);
 //        if (sp != null)
@@ -201,10 +188,10 @@ public class AcollyteAdminServiceImpl implements AcollyteAdminService {
         
         LocalTime time = LocalTime.of(23, 59, 59);
 
-        OffsetDateTime from, to;
+        ZonedDateTime from, to;
         
-        from = DateUtil.localDateToOffsetDateTime(fromLDT);
-        to = DateUtil.localDateToOffsetDateTime(toLDT, time);
+        from = DateUtil.localDateToZonedDateTime(fromLDT); // Devuelve a las 00:00
+        to = DateUtil.localDateToZonedDateTime(toLDT, time);
         
         servicios = serviceRepository.listServicesFromTo(from, to); 
         raffle.setEventos(servicios);

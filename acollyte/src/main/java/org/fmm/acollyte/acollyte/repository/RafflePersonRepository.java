@@ -1,10 +1,9 @@
 package org.fmm.acollyte.acollyte.repository;
 
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.Optional;
 
-import org.fmm.acollyte.common.model.AssignedRafflePerson;
 import org.fmm.acollyte.common.model.Person;
 import org.fmm.acollyte.common.model.RafflePerson;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -26,7 +25,7 @@ public interface RafflePersonRepository extends JpaRepository<RafflePerson, Inte
             + " WHERE rp.person = :person"
             + " AND s.serviceDate >= :from"
             + " ORDER BY s.serviceDate")
-    List<RafflePerson> findNextServices(@Param("person") Person person, @Param("from") OffsetDateTime from);
+    List<RafflePerson> findNextServices(@Param("person") Person person, @Param("from") ZonedDateTime from);
 
     @Query(value = "SELECT DISTINCT rp FROM RafflePerson rp "
             + " INNER JOIN FETCH rp.raffle r"

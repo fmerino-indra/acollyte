@@ -1,13 +1,14 @@
 package org.fmm.acollyte.acollyteadmin.service;
 
 import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.fmm.acollyte.common.model.Person;
 import org.fmm.acollyte.common.model.Service;
 
 public class AvailabilityDTO {
-    private OffsetDateTime date = null;
+    private ZonedDateTime date = null;
     private Service service = null;
     private List<Person> candidates = null;
     private Integer nCandidates = null;
@@ -21,7 +22,7 @@ public class AvailabilityDTO {
             nCandidates = candidates.size();
     }
     
-    public OffsetDateTime getDate() {
+    public ZonedDateTime getDate() {
         return date;
     }
     public List<Person> getCandidates() {

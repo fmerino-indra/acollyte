@@ -1,6 +1,6 @@
 package org.fmm.acollyte.acollyteadmin.repository;
 
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.List;
 
 import org.fmm.acollyte.common.model.Service;
@@ -28,7 +28,7 @@ public interface ServiceRepository extends JpaRepository<Service, Integer> {
             + " INNER JOIN FETCH s.serviceTypeBean st"
             + " WHERE s.serviceDate >= :from AND s.serviceDate <= :to"
             + " ORDER BY s.serviceDate ASC")
-    List<Service> listServicesFromTo(@Param("from")OffsetDateTime from, @Param("to")OffsetDateTime to);
+    List<Service> listServicesFromTo(@Param("from")ZonedDateTime from, @Param("to")ZonedDateTime to);
 //    @Query("SELECT DISTINCT s FROM Service s "
 //            + " INNER JOIN FETCH s.serviceTypeBean st"
 //            + " WHERE s.serviceDate >= :from AND s.serviceDate <= :to"

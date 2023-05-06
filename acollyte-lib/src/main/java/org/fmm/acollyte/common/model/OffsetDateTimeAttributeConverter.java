@@ -6,6 +6,7 @@ import java.time.ZoneId;
 
 import javax.persistence.AttributeConverter;
 
+@Deprecated
 //@Converter(autoApply = true)
 public class OffsetDateTimeAttributeConverter implements AttributeConverter<OffsetDateTime, LocalDateTime> {
 

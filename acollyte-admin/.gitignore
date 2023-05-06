@@ -29,3 +29,5 @@ build/
 
 ### VS Code ###
 .vscode/
+/docker-commands.txt
+/algunas-queries.sql

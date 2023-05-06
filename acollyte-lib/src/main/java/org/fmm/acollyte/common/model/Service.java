@@ -1,7 +1,7 @@
 package org.fmm.acollyte.common.model;
 
 import java.io.Serializable;
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,7 +45,7 @@ public class Service implements Serializable {
 //	@Temporal(TemporalType.DATE)
 	@Column(name="service_date", columnDefinition = "DATE")
 //    @Column(name="service_date")
-	private OffsetDateTime serviceDate;
+	private ZonedDateTime serviceDate;
 
 	@Column(name="service_name")
 	private String serviceName;
@@ -160,11 +160,11 @@ public class Service implements Serializable {
 //	    return sp;
 //	}
 	
-    public OffsetDateTime getServiceDate() {
+    public ZonedDateTime getServiceDate() {
         return serviceDate;
     }
 
-    public void setServiceDate(OffsetDateTime serviceDate) {
+    public void setServiceDate(ZonedDateTime serviceDate) {
         this.serviceDate = serviceDate;
     }
     

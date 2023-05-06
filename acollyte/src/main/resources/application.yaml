@@ -5,11 +5,11 @@ spring:
         hibernate:
             ddl-auto: none
     datasource:
-        platform: postgres
-        url: jdbc:postgresql://ec2-54-75-238-138.eu-west-1.compute.amazonaws.com:5432/d45mro2qcj28j1?currentSchema=acollyte_calendar
-        username: pwndjizgoydktg
-        password: 09483c6f7a2bf97afbf0bfd8d04d66c65f986d35b96f22478f9b33a069984d02
-        driverClassName: org.postgresql.Driver
+       platform: postgres
+       url: jdbc:postgresql://localhost:5432/?currentSchema=acollyte
+       username: acollyte
+       password: femema
+       driverClassName: org.postgresql.Driver
 logging:
     level:
         org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: TRACE

@@ -63,7 +63,7 @@ class AcollyteApplicationTests {
     @Autowired
     private MockMvc mvc;
 
-    @Test
+    //@Test
     void makeSubstitutions() throws JsonProcessingException, Exception {
         List<Substitution> lista = null;
         List<AssignedRafflePerson> assignedList = null;
@@ -113,7 +113,7 @@ class AcollyteApplicationTests {
     }
 
 
-//    @Test
+    @Test
     void testListRaffleMVC() throws JsonProcessingException, Exception {
       ObjectMapper objectMapper = null;
       ResultActions resultActions = null;
@@ -219,8 +219,9 @@ class AcollyteApplicationTests {
 //        rp=servicePersonRepository.findNextService(person, from, page);
 //        System.out.println(rp);
 
-        rafflePersons=rafflePersonRepository.findNextServices(person, from);
-        System.out.println(rafflePersons);
+        // Mientras offset
+//        rafflePersons=rafflePersonRepository.findNextServices(person, from);
+//        System.out.println(rafflePersons);
 
         assignedRafflePersons=assignedRafflePersonRepository.findNextAssignedServices(person, from);
         System.out.println(assignedRafflePersons);

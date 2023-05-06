@@ -3,6 +3,7 @@ package org.fmm.acollyte.common.model;
 import java.io.Serializable;
 import java.sql.Timestamp;
 import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -36,7 +37,7 @@ public class Raffle implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 
-	private OffsetDateTime date;
+	private ZonedDateTime date;
 
     private Timestamp raffleDate;
 
@@ -73,11 +74,11 @@ public class Raffle implements Serializable {
 		this.id = id;
 	}
 
-	public OffsetDateTime getDate() {
+	public ZonedDateTime getDate() {
 		return this.date;
 	}
 
-	public void setDate(OffsetDateTime date) {
+	public void setDate(ZonedDateTime date) {
 		this.date = date;
 	}
 

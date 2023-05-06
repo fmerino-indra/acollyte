@@ -2,7 +2,6 @@ package org.fmm.acollyte.common.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -28,7 +27,7 @@ public class Person implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(columnDefinition = "serial")
+//	@Column(columnDefinition = "serial")
 	private Integer id;
 
 	private Integer comunidad;

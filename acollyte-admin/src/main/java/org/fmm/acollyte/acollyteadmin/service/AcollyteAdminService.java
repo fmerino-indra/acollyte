@@ -27,6 +27,4 @@ public interface AcollyteAdminService {
 
     RaffleDTO raffle(RaffleDTO raffle);
 
-    List<Service> correctLocalTime();
-
 }

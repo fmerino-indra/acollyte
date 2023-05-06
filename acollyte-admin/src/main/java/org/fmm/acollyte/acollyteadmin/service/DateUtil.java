@@ -6,18 +6,31 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
 import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.time.temporal.ChronoField;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DateUtil {
+    public static ZonedDateTime localDateToZonedDateTime(LocalDate date, LocalTime time) {
+        LocalDateTime aux = date.atTime(time);
+        return aux.atZone(ZoneId.systemDefault());
+    }
+    
+    public static ZonedDateTime localDateToZonedDateTime(LocalDate date) {
+        LocalTime time = LocalTime.of(0,0);
+        return localDateToZonedDateTime(date, time);
+    }
+    
+    @Deprecated
     public static OffsetDateTime localDateToOffsetDateTime(LocalDate date, LocalTime time) {
         LocalDateTime aux = date.atTime(time);
 //        service.setServiceDate(Date.from(sunday.atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
         return aux.atZone(ZoneId.systemDefault()).toOffsetDateTime();
     }
     
+    @Deprecated
     public static OffsetDateTime localDateToOffsetDateTime(LocalDate date) {
         LocalTime time = LocalTime.of(0, 0);
         return localDateToOffsetDateTime(date, time);

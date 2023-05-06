@@ -1,6 +1,6 @@
 package org.fmm.acollyte.acollyte.dto;
 
-import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 
 public class RafflePersonDTO {
     private Integer personId;
@@ -12,7 +12,7 @@ public class RafflePersonDTO {
     private String phoneNumber;
     private Integer comunidad;
     
-    private OffsetDateTime serviceDate;
+    private ZonedDateTime serviceDate;
     private String serviceName;
     private Boolean canGo;
     private Boolean haveGone;
@@ -41,10 +41,10 @@ public class RafflePersonDTO {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public OffsetDateTime getServiceDate() {
+    public ZonedDateTime getServiceDate() {
         return serviceDate;
     }
-    public void setServiceDate(OffsetDateTime serviceDate) {
+    public void setServiceDate(ZonedDateTime serviceDate) {
         this.serviceDate = serviceDate;
     }
     public String getServiceName() {

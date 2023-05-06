@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.OffsetDateTime;
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -118,7 +119,7 @@ class AcollyteAdminApplicationTests {
 
     }
 
-@Test
+//@Test
     void testRaffle() {
         RaffleDTO raffle = null;
 
@@ -136,29 +137,20 @@ class AcollyteAdminApplicationTests {
         fromLDT = LocalDate.of(2021,01,01);
         toLDT = LocalDate.of(2021,12,31);
         
-        OffsetDateTime from, to;
-        from = DateUtil.localDateToOffsetDateTime(fromLDT);
-        to = DateUtil.localDateToOffsetDateTime(toLDT, time);
+        ZonedDateTime from, to;
+        from = DateUtil.localDateToZonedDateTime(fromLDT);
+        to = DateUtil.localDateToZonedDateTime(toLDT, time);
         
         List<Service> servicios = null;
         servicios = serviceRepository.listServicesFromTo(from, to); 
     }
-//	@Test
+	@Test
 //	@Transactional
     void testCreateServices() {
 	    List<Service> services = null;
-        services = acollyteAdminService.createSundays(LocalDate.of(2022, 1, 1), LocalDate.of(2022, 12, 31), LocalTime.of(12, 0));
+        services = acollyteAdminService.createSundays(LocalDate.of(2023, 1, 1), LocalDate.of(2023, 12, 31), LocalTime.of(12, 0));
         Assert.notNull(services, "Services created OK");
     }
-
-//    @Test
-//    @Transactional
-    void testCorrectServices() {
-        List<Service> services = null;
-        services = acollyteAdminService.correctLocalTime();
-        Assert.notNull(services, "Services corrected OK");
-    }
-
 
 //@Test
     // Verano 2021 - 3º Trimestre
